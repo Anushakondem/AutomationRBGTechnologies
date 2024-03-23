@@ -31,8 +31,21 @@ public class OrangeHrmloginPage
 	
 	
 	@FindBy(xpath = "//input[@name = 'firstName']" )
-	public
+	
 	WebElement firstname;
+	
+	@FindBy(xpath = "//input[@name='middleName']")
+	WebElement middlename;
+	
+	@FindBy(xpath = "//input[@name='lastName']")
+	WebElement lastname;
+	
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
+	WebElement empId;
+	
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[3]")
+	WebElement OtherId;
+
 	
 	GenericKeywordsWithPage keys = new GenericKeywordsWithPage("OrangeHrmloginPage");
 	public void orusername(String enteruserId)
@@ -72,13 +85,32 @@ public class OrangeHrmloginPage
 //    	keys.jsClick(firstname);
     	Thread.sleep(5000);
         
-    	keys.JSenterData(firstname, frist);
+    	keys.enterData(firstname, frist);
 //    	this.firstname.clear();
     	
     	Thread.sleep(5000);
 //    	keys.enterData(firstname, frist);
     }
-    
+    public void middlename(String middle)
+    {
+    	keys.enterData(middlename, middle);
+    }
+   
+	public void lastname(String last) 
+	{
+		keys.enterData(lastname, last);
+		
+	}
+	
+	public void empid(String emp) 
+	{
+		keys.enterData(empId, emp);
+		
+	}
+	public void otherId(String other)
+	{
+		keys.enterData(OtherId, other);
+	}
 }
     	
     

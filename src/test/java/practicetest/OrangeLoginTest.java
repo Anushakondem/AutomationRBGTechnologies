@@ -53,9 +53,20 @@ public class OrangeLoginTest extends BaseTest
 		Thread.sleep(4000);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 		p1.personaldetails();
 	
-		
+		Thread.sleep(4000); 
 		p1.fristname(h1.get("firstname"));
-		Thread.sleep(4000);
+	
+		Thread.sleep(5000);
+		p1.middlename(h1.get("middlename"));
+		
+		p1.lastname(h1.get("lastname"));
+		Thread.sleep(6000);
+		
+		p1.empid(h1.get("empid"));
+		Thread.sleep(7000);
+		
+		p1.otherId(h1.get("OtherId"));
+		Thread.sleep(8000);
 
 	}
 	@DataProvider
