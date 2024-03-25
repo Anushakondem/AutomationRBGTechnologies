@@ -34,14 +34,14 @@ public class OrangeLoginTest extends BaseTest
 	{
 		beforeClassForChild(this);
 	}
-	
+
 
 	@Test(dataProvider = "setData1")
 	public void OrangeHRMLogin(Hashtable<String , String> h1) throws Throwable 
 	{
 		extentLoggerECP = parentExtentLogger.createNode("Login With Invalid Credentials");
 		s_assert = new SoftAssert();
-		
+
 		OrangeHRMLoginPage();
 		p1.orusername(h1.get("username"));
 		p1.orpassword(h1.get("password"));
@@ -52,21 +52,44 @@ public class OrangeLoginTest extends BaseTest
 
 		Thread.sleep(4000);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 		p1.personaldetails();
-	
+
 		Thread.sleep(4000); 
-		p1.fristname(h1.get("firstname"));
-	
+		p1.enterfristname(h1.get("firstName"));
+
 		Thread.sleep(5000);
-		p1.middlename(h1.get("middlename"));
-		
-		p1.lastname(h1.get("lastname"));
+		p1.entermiddlename(h1.get("middleName"));
+
+		p1.enterlastname(h1.get("lastName"));
 		Thread.sleep(6000);
-		
-		p1.empid(h1.get("empid"));
+
+		p1.enterempid(h1.get("empId"));
 		Thread.sleep(7000);
-		
-		p1.otherId(h1.get("OtherId"));
-		Thread.sleep(8000);
+
+		p1.enterdriverLicensenum(h1.get("license"));
+		Thread.sleep(5000);
+
+		p1.enterlicenseExpiry(h1.get("licenseExpiryDate"));
+		Thread.sleep(4000);
+
+
+		//p1.selectnationality(h1.get("Indian"));
+		//Thread.sleep(3000);
+
+		p1.selectNationality(h1.get("nationaLitySelect"));
+		Thread.sleep(3000);
+
+		p1.martialstatusselect(h1.get("martialstatus"));
+		Thread.sleep(3000);
+
+		p1.genderselection(h1.get("genderSelected"));
+		Thread.sleep(3000);
+		p1.submitbutton(h1.get("savebutton"));
+		Thread.sleep(4000);
+
+		p1.clickimage();
+		Thread.sleep(5000);
+
+		p1.profilepictureupload();
 
 	}
 	@DataProvider
