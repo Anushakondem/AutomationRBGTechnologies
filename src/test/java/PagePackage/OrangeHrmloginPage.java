@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -31,33 +32,19 @@ public class OrangeHrmloginPage
 
 	@FindBy(xpath = "//a[@class='orangehrm-tabs-item --active']")
 	WebElement personalDetails;
+	
+	@FindBy(xpath = "(//label[text()='License Expiry Date']//following::i)[1]")
+	WebElement licexpirydate;
+	
+	@FindBy(xpath = "(//i[@class='oxd-icon bi-caret-down-fill oxd-icon-button__icon'])[2]")
+	WebElement year;
+	
+	@FindBy(xpath ="(//i[@class='oxd-icon bi-caret-down-fill oxd-icon-button__icon'])[1]")
+	WebElement month;
+	
 
-
-	@FindBy(xpath = "//input[@name = 'firstName']" )
-
-	WebElement firstName;
-
-	@FindBy(xpath = "//input[@name='middleName']")
-	WebElement middleName;
-
-	@FindBy(xpath = "//input[@name='lastName']")
-	WebElement lastName;
-
-	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
-	WebElement empId;
-
-	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[4]")
-	WebElement driverLicense;
-
-	@FindBy(xpath = "(//input[@placeholder='yyyy-dd-mm'])[1]")
-	WebElement licenseExpiryDate;
-
-	@FindBy(xpath = "(//div[@class='oxd-select-text--after'])[1]")
+    @FindBy(xpath = "(//div[@class='oxd-select-text--after'])[1]")
 	WebElement nationaLitySelect;
-
-	@FindBy(xpath = "//span[text()='Indian']")
-	WebElement nationaLitySelected;
-
 
 	@FindBy(xpath = "(//div[@class = 'oxd-select-text--after'])[2]" )
 	WebElement martialStatusSelect;
@@ -76,8 +63,6 @@ public class OrangeHrmloginPage
 
 
 
-	//@FindBy(xpath = "//div[@class='oxd-select-text-input'])[1]")
-	//WebElement nationaLity;
 
 
 	GenericKeywordsWithPage keys = new GenericKeywordsWithPage("OrangeHrmloginPage");
@@ -103,7 +88,7 @@ public class OrangeHrmloginPage
 		keys.click(personalDetails);
 
 	}
-	public void enterfristname(String frist) throws Throwable
+	public void enterfristname(String first1) throws Throwable
 	{
 		//    	keys.clearEnter(firstname, frist);
 
@@ -116,45 +101,64 @@ public class OrangeHrmloginPage
 		//    System.out.println("Actual is Enabled  "+d2);
 		//    
 		//    	keys.jsClick(firstname);
-		Thread.sleep(5000);
+		
 
-		keys.enterData(firstName, frist);
+		//keys.enterData(firstName, frist);
 		//    	this.firstname.clear();
 
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		//    	keys.enterData(firstname, frist);
+		
+		WebElement firstName=keys.driver.findElement(By.xpath("//input[@name='firstName']"));
+		firstName.click();
+		Actions act=new Actions(keys.driver);
+		act.doubleClick(firstName).perform();
+		Thread.sleep(4000);
+		keys.enterData(firstName, first1);
 	}
-	public void entermiddlename(String middle)
+	public void entermiddlename(String middle) throws Throwable
 	{
+		WebElement middleName = keys.driver.findElement(By.xpath("//input[@name='middleName']"));
+		middleName.click();
+		Actions act = new Actions(keys.driver);
+		act.doubleClick(middleName).perform();
+		Thread.sleep(5000);
 		keys.enterData(middleName, middle);
 	}
-
-	public void enterlastname(String last) 
+	public void enterlastname(String last) throws Throwable
 	{
+		WebElement lastName = keys.driver.findElement(By.xpath("//input[@name='lastName']"));
+		lastName.click();
+		Actions act = new Actions(keys.driver);
+		act.doubleClick(lastName).perform();
+		Thread.sleep(5000);
 		keys.enterData(lastName, last);
-
+		
 	}
-
-	public void enterempid(String emp) 
+	
+	public void calender1(String years,String months,String date) throws Throwable
 	{
-		keys.enterData(empId, emp);
-
-	}
-
-	public void enterdriverLicensenum(String license)
-	{
-		keys.enterData(driverLicense, license);
-	}
-	public void enterlicenseExpiry(String licexpirydate)
-	{
-		keys.enterData(licenseExpiryDate, licexpirydate);
+		keys.click(licexpirydate);
+		keys.click(year);
+		Thread.sleep(4000);
+		WebElement year1 =keys.driver.findElement(By.xpath("//li[text()='"+years+"']"));
+		year1.click();
+		Thread.sleep(5000);
+		month.click();
+		WebElement month1 = keys.driver.findElement(By.xpath("//li[text()='"+months+"']"));
+		month1.click();
+		Thread.sleep(6000);
+		WebElement dated = keys.driver.findElement(By.xpath("//div[text()='"+date+"']"));
+		dated.click();
+		Thread.sleep(4000);
+		
 	}
 	public void selectNationality(String nationality) throws InterruptedException 
 	{
 		keys.click(nationaLitySelect);
 		Thread.sleep(5000);
+		WebElement nationaLitySelected = keys.driver.findElement(By.xpath("//span[text()='"+nationality+"']"));
 		keys.click(nationaLitySelected);
-
 	}
 	public void martialstatusselect(String martial) throws InterruptedException
 	{
@@ -168,8 +172,9 @@ public class OrangeHrmloginPage
 	{
 		keys.click(genderSelected);
 	}
-
-	public void submitbutton(String save)
+	
+	
+	public void submitbutton()
 	{
 		keys.click(savebutton);
 	}
@@ -183,12 +188,8 @@ public class OrangeHrmloginPage
 		Thread.sleep(5000);
 		Runtime.getRuntime().exec(System.getProperty("user.dir")+"\\AUTOIT\\FileUpload.exe");
 	}
+
+
 	
 	
 }
-
-
-
-
-
-
