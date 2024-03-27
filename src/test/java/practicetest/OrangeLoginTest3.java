@@ -50,14 +50,37 @@ public class OrangeLoginTest3 extends BaseTest
 		Thread.sleep(6000);
 		s1.orcontactdetails();
 		Thread.sleep(5000);
+		s1.orstreet(h1.get("street1"));
+	
+		s1.orstreet2(h1.get("street2"));
+	
+		s1.orcity(h1.get("cities"));
 		
-	}
+	
+		s1.orstatepro(h1.get("states"));
+		
+		
+		s1.orzippostal(h1.get("postalzip"));
+		
+		
+		s1.orcountry(h1.get("countries"));
+		
+		s1.ormobile(h1.get("mobilenumber"));
+	
+		s1.orworknum(h1.get("workphonenum"));
+	
+		s1.orworkemail(h1.get("emailaddress"));
+		
+		s1.orotheremail(h1.get("otheremailadress"));
+		
+		s1.contactdetailssave();
+		}
 
 	@DataProvider
 	public Object[][] setData1()
 	{
 		Xls_Reader xls = new Xls_Reader(System.getProperty("user.dir") + "//TestData//testdata.xlsx");
-		return ReadData.getData("OrangeHRM2", "OrangeHRM_TESTCASES", xls);	
+		return ReadData.getData("OrangeHRM3", "OrangeHRM_TESTCASES", xls);	
 	}
 }
 
